@@ -1,0 +1,121 @@
+<template>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <h1 class="text-center mb-3">User Information Form</h1>
+
+        <form @submit.prevent="submitForm">
+          
+          <div class="row g-3">
+
+            <div class="col-12 col-md-6">
+              <label for="username" class="form-label">Username</label>
+              <input id="username" type="text" class="form-control" v-model="formData.username" />
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="password" class="form-label">Password</label>
+              <input id="password" type="password" class="form-control" v-model="formData.password" />
+            </div>
+
+            <div class="col-12 col-md-6">
+              <div class="form-check mt-1 mt-md-4">
+                <input id="isAustralian" type="checkbox" class="form-check-input" v-model="formData.isAustralian" />
+                <label for="isAustralian" class="form-check-label ms-2">Australian Resident?</label>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="gender" class="form-label">Gender</label>
+              <select id="gender" class="form-select" v-model="formData.gender">
+                <option value="">Select…</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label for="reason" class="form-label">Reason for joining</label>
+              <textarea id="reason" rows="3" class="form-control" v-model="formData.reason"></textarea>
+            </div>
+
+            <div class="col-12 d-flex gap-2 justify-content-end">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-secondary" @click="clearForm">Clear</button>
+            </div>
+
+          </div>
+        </form>
+
+        <!-- Cards (Activity 6.2) -->
+        <div class="row mt-5" v-if="submittedCards.length">
+          <div class="d-flex flex-wrap justify-content-start">
+            <div
+              v-for="(card, index) in submittedCards"
+              :key="index"
+              class="card m-2"
+              style="width: 18rem;"
+            >
+              <div class="card-header">User Information</div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Username: {{ card.username }}</li>
+                <li class="list-group-item">Password: {{ card.password }}</li>
+                <li class="list-group-item">
+                  Australian Resident: {{ card.isAustralian ? 'Yes' : 'No' }}
+                </li>
+                <li class="list-group-item">Gender: {{ card.gender }}</li>
+                <li class="list-group-item">Reason: {{ card.reason }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- /Cards -->
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const formData = ref({
+  username: '',
+  password: '',
+  isAustralian: false,
+  reason: '',
+  gender: ''
+})
+
+const submittedCards = ref([])
+
+const submitForm = () => {
+  submittedCards.value.push({ ...formData.value })
+}
+
+const clearForm = () => {
+  formData.value = {
+    username: '',
+    password: '',
+    isAustralian: false,
+    reason: '',
+    gender: ''
+  }
+}
+</script>
+
+<style scoped>
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card-header {
+  background-color: #275fda;
+  color: white;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+}
+.list-group-item { padding: 10px; }
+</style>

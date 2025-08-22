@@ -2,9 +2,13 @@
 import HelloWorld from './components/HelloWorld.vue'
 import JSON from './components/JSON.vue';
 import TheWelcome from './components/TheWelcome.vue'
+import LoginForm from './components/LoginForm.vue'
 </script>
 
 <template>
+  <LoginForm>
+
+  </LoginForm>
   <!-- <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
@@ -16,7 +20,7 @@ import TheWelcome from './components/TheWelcome.vue'
   <main>
     <TheWelcome />
   </main> -->
-  <JSON/>
+  <!-- <JSON/> -->
 </template>
 
 <style scoped>

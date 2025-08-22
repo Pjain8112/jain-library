@@ -1,0 +1,36 @@
+/* Headline*/
+h1 {
+  text-align: center;          
+  margin-top: 20px;           
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+.form {
+  text-align: initial;         
+  margin-top: 0;               
+}
+
+/* Input/select/textarea  */
+#username:focus,
+#password:focus,
+#reason:focus,
+#gender:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 .2rem rgba(13,110,253,.25);
+  background-color: #fff;     
+}
+
+/* Proper focus ring for the checkbox */
+.form-check-input:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 .2rem rgba(13,110,253,.25);
+}
+
+/* Ensure fields never overflow their grid column */
+.form-control,
+.form-select,
+textarea {
+  max-width: 100%;
+}
+
